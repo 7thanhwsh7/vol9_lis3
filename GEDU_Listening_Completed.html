@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G.EDU — IELTS Listening Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   G.EDU DESIGN SYSTEM — IELTS LISTENING TEMPLATE
+   ============================================================ */
+:root {
+  --gold: #D4AF37;
+  --gold-light: #e8cc6a;
+  --gold-dim: rgba(212,175,55,0.18);
+  --navy: #1a1208;
+  --navy-mid: #2a1f0a;
+  --cream: #fdfcfb;
+  --ink: #2d3436;
+  --ink-soft: #636e72;
+  --flag-red: #e17055;
+  --flag-red-dim: rgba(225,112,85,0.15);
+  --sidebar-w: 280px;
+  --hl-yellow: rgba(255,214,0,0.45);
+  --hl-green: rgba(39,174,96,0.35);
+  --hl-blue: rgba(52,152,219,0.35);
+  --hl-pink: rgba(232,67,147,0.35);
+  --radius: 6px;
+  --transition: 0.22s ease;
+  font-size: 15px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── HIGHLIGHT MARKS ── */
+mark.hl-yellow { background: var(--hl-yellow); border-radius: 2px; padding: 0 1px; color: inherit; }
+mark.hl-green  { background: var(--hl-green);  border-radius: 2px; padding: 0 1px; color: inherit; }
+mark.hl-blue   { background: var(--hl-blue);   border-radius: 2px; padding: 0 1px; color: inherit; }
+mark.hl-pink   { background: var(--hl-pink);   border-radius: 2px; padding: 0 1px; color: inherit; }
+
+/* ============================================================
+   SCREEN MANAGER
+   ============================================================ */
+.screen { display: none; }
+.screen.active { display: flex; }
+
+/* ============================================================
+   LOGIN SCREEN
+   ============================================================ */
+#screen-login {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-bg-text {
+  position: absolute; inset: 0; z-index: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700; letter-spacing: 0.08em;
+  color: rgba(212,175,55,0.06);
+  text-transform: uppercase; text-align: center;
+  pointer-events: none; user-select: none;
+  line-height: 1.2; padding: 24px;
+  word-break: break-word;
+}
+
+.login-bg-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,175,55,0.22) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(212,175,55,0.06) 39px, rgba(212,175,55,0.06) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(212,175,55,0.06) 39px, rgba(212,175,55,0.06) 40px);
+  pointer-events: none;
+}
+
+.login-card {
+  position: relative; z-index: 1;
+  background: rgba(26,18,8,0.85);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 12px;
+  padding: 48px 44px 40px;
+  width: 100%; max-width: 460px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.08);
+}
+
+.login-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.login-logo span { color: rgba(212,175,55,0.5); font-size: 0.9rem; font-weight: 400; font-family: 'Be Vietnam Pro', sans-serif; letter-spacing: 0.15em; display: block; margin-top: 2px; }
+
+.login-divider {
+  height: 1px; background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+  margin: 20px 0 28px;
+}
+
+.login-notice {
+  font-size: 0.78rem; color: rgba(212,175,55,0.75);
+  text-align: center; line-height: 1.6;
+  margin-bottom: 24px;
+  padding: 10px 14px;
+  background: rgba(212,175,55,0.07);
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: var(--radius);
+}
+
+.login-field { margin-bottom: 16px; }
+.login-field label {
+  display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.login-field input {
+  width: 100%; padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: var(--radius);
+  color: #fff; font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.95rem;
+  outline: none; transition: border-color var(--transition), background var(--transition);
+}
+.login-field input::placeholder { color: rgba(255,255,255,0.3); }
+.login-field input:focus {
+  border-color: var(--gold); background: rgba(212,175,55,0.06);
+}
+
+.btn-start {
+  width: 100%; margin-top: 24px; padding: 14px;
+  background: linear-gradient(135deg, var(--gold) 0%, #b8960c 100%);
+  color: var(--navy); font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em;
+  border: none; border-radius: var(--radius); cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.btn-start:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-start:active { transform: translateY(0); }
+
+/* ============================================================
+   READY SCREEN (countdown intro)
+   ============================================================ */
+#screen-ready {
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.ready-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(212,175,55,0.15) 0%, transparent 70%); pointer-events: none; }
+
+.ready-card {
+  position: relative; z-index: 1; text-align: center;
+  padding: 48px 44px; max-width: 500px;
+  background: rgba(26,18,8,0.7);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+.ready-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-bottom: 6px; letter-spacing: 0.06em; }
+.ready-test-name { font-size: 0.8rem; color: rgba(212,175,55,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; }
+.ready-student { font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 4px; }
+.ready-class { font-size: 0.85rem; color: rgba(212,175,55,0.65); margin-bottom: 32px; }
+.ready-divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,175,55,0.35),transparent); margin: 0 -10px 32px; }
+.ready-note {
+  font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7;
+  margin-bottom: 32px; padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0;
+  text-align: left;
+}
+.btn-begin {
+  padding: 16px 48px;
+  background: linear-gradient(135deg, var(--gold) 0%, #b8960c 100%);
+  color: var(--navy); font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700; font-size: 1rem; letter-spacing: 0.06em;
+  border: none; border-radius: var(--radius); cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.3);
+}
+.btn-begin:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,175,55,0.4); }
+
+/* ============================================================
+   EXAM SCREEN
+   ============================================================ */
+#screen-exam {
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--navy);
+  border-right: 1px solid rgba(212,175,55,0.15);
+  display: flex; flex-direction: column;
+  position: fixed; top: 0; left: 0; bottom: 0;
+  z-index: 100; overflow-y: auto;
+  padding-bottom: 24px;
+}
+.sidebar-logo {
+  padding: 22px 20px 14px;
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+}
+.sidebar-logo .g-logo {
+  font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.1em;
+}
+.sidebar-logo .g-test-name {
+  font-size: 0.68rem; color: rgba(212,175,55,0.5); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-top: 2px;
+}
+.sidebar-student {
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid rgba(212,175,55,0.08);
+}
+.sidebar-student .s-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+.sidebar-student .s-class { font-size: 0.75rem; color: rgba(212,175,55,0.55); margin-top: 2px; letter-spacing: 0.08em; }
+
+/* Timer */
+.sidebar-timer {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(212,175,55,0.08);
+}
+.timer-label { font-size: 0.65rem; color: rgba(212,175,55,0.5); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+.timer-display {
+  font-family: 'DM Mono', monospace; font-size: 1.9rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.timer-display.warn { color: var(--flag-red); animation: pulse-timer 1s ease-in-out infinite; }
+@keyframes pulse-timer { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+/* Question Map */
+.sidebar-map { padding: 16px 20px 12px; flex: 1; }
+.map-label {
+  font-size: 0.65rem; color: rgba(212,175,55,0.5);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;
+}
+.q-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;
+}
+.q-cell {
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px; cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+}
+.q-cell:hover { border-color: var(--gold-light); color: var(--gold-light); }
+.q-cell.answered { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); font-weight: 600; }
+.q-cell.flagged { border-color: var(--flag-red); color: var(--flag-red); }
+.q-cell.answered.flagged { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
+.q-cell.answered.flagged::after {
+  content: ''; position: absolute; top: 2px; right: 2px;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--flag-red);
+}
+.part-label-cell {
+  grid-column: 1 / -1;
+  font-size: 0.6rem; color: rgba(212,175,55,0.4); letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 6px 0 2px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+/* Sidebar Buttons */
+.sidebar-actions { padding: 12px 20px 0; display: flex; flex-direction: column; gap: 8px; }
+.btn-flag-view {
+  width: 100%; padding: 9px 12px;
+  background: transparent;
+  border: 1px solid var(--flag-red);
+  color: var(--flag-red); border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition); letter-spacing: 0.04em;
+}
+.btn-flag-view:hover { background: var(--flag-red-dim); }
+
+.btn-submit {
+  width: 100%; padding: 11px 12px;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold); border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; transition: all var(--transition); letter-spacing: 0.06em;
+}
+.btn-submit:hover { background: var(--gold-dim); }
+
+/* ── MAIN CONTENT ── */
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1; padding: 0 0 80px;
+  position: relative;
+}
+
+/* Highlight Toolbar — contextual popup */
+.hl-toolbar {
+  position: fixed; z-index: 200;
+  display: none; align-items: center; gap: 6px;
+  background: rgba(26,18,8,0.93); border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 24px; padding: 6px 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  pointer-events: auto;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+.hl-toolbar.visible { display: flex; }
+.hl-btn {
+  width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent;
+  cursor: pointer; transition: transform var(--transition), border-color var(--transition);
+  position: relative;
+}
+.hl-btn:hover { transform: scale(1.2); }
+.hl-btn.active { border-color: #fff; transform: scale(1.15); }
+.hl-btn[data-color="yellow"] { background: rgba(255,214,0,0.8); }
+.hl-btn[data-color="green"]  { background: rgba(39,174,96,0.8); }
+.hl-btn[data-color="blue"]   { background: rgba(52,152,219,0.8); }
+.hl-btn[data-color="pink"]   { background: rgba(232,67,147,0.8); }
+.hl-erase {
+  width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+  font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+.hl-erase:hover { background: rgba(255,255,255,0.2); }
+.hl-sep { width: 1px; height: 14px; background: rgba(212,175,55,0.25); margin: 0 2px; }
+
+/* Part Header */
+.part-header {
+  padding: 40px 48px 0;
+}
+.part-tag {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.35); border-radius: 3px;
+  padding: 3px 10px; margin-bottom: 12px;
+}
+.part-title {
+  font-family: 'Playfair Display', serif; font-size: 1.5rem;
+  font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3;
+}
+.part-instruction {
+  font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 4px;
+  font-style: italic;
+}
+.part-divider {
+  height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0.4), transparent);
+  margin: 20px 0 28px;
+}
+
+/* Question Block */
+.q-block {
+  padding: 0 48px; margin-bottom: 8px;
+  scroll-margin-top: 80px;
+}
+.q-block + .q-block { margin-top: 0; }
+
+/* Section label (e.g. Questions 1–10) */
+.q-section-label {
+  padding: 24px 48px 12px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(212,175,55,0.75);
+  border-bottom: 1px solid rgba(212,175,55,0.1);
+  margin-bottom: 20px;
+}
+
+/* Question row */
+.q-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(45,52,54,0.07);
+}
+.q-row:last-child { border-bottom: none; }
+
+.q-num {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500;
+  color: var(--gold); min-width: 28px; padding-top: 2px;
+  flex-shrink: 0;
+}
+.q-flag-btn {
+  width: 22px; height: 22px; flex-shrink: 0;
+  background: transparent; border: none; cursor: pointer;
+  font-size: 13px; line-height: 22px; text-align: center;
+  opacity: 0.35; transition: opacity var(--transition), transform var(--transition);
+  padding: 0;
+}
+.q-flag-btn:hover { opacity: 0.75; transform: scale(1.1); }
+.q-flag-btn.flagged { opacity: 1; filter: none; }
+
+.q-content { flex: 1; }
+.q-text { font-size: 0.92rem; line-height: 1.65; color: var(--ink); margin-bottom: 8px; }
+
+/* Fill-in input */
+.q-input {
+  background: transparent; border: none; border-bottom: 1.5px solid rgba(45,52,54,0.3);
+  outline: none; font-family: 'DM Mono', monospace; font-size: 0.9rem;
+  color: var(--ink); padding: 2px 6px; min-width: 140px;
+  transition: border-color var(--transition);
+}
+.q-input:focus { border-bottom-color: var(--gold); }
+.q-input.has-answer { border-bottom-color: var(--gold); color: #1a5c2a; font-weight: 500; }
+
+/* ── CLOZE / INLINE COMPLETION ──
+   Dùng cho dạng note/form/table completion
+   Input nằm trực tiếp trong đoạn văn, số câu nhỏ bên dưới
+   ─────────────────────────────────────────────────────── */
+
+/* Wrapper block dùng thay q-block cho dạng cloze */
+.cloze-block {
+  padding: 0 48px; margin-bottom: 24px;
+}
+
+/* Section title bên trong cloze (vd: "Alma Park", "PLAN FOR STUDY SYNDICATE") */
+.cloze-section-title {
+  font-size: 0.82rem; font-weight: 700; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 20px 0 10px;
+}
+
+/* Dòng văn bản có inline input */
+.cloze-line {
+  font-size: 0.92rem; line-height: 2; color: var(--ink);
+  margin-bottom: 2px; display: flex; align-items: baseline;
+  flex-wrap: wrap; gap: 4px;
+}
+
+/* Input inline trong câu văn */
+.cloze-input-wrap {
+  display: inline-flex; flex-direction: column;
+  align-items: center; gap: 1px;
+  vertical-align: bottom; margin: 0 4px;
+}
+.cloze-input {
+  background: transparent; border: none;
+  border-bottom: 1.5px solid rgba(45,52,54,0.3);
+  outline: none; font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.9rem;
+  color: var(--ink); padding: 1px 6px; min-width: 120px; text-align: center;
+  transition: border-color var(--transition);
+}
+.cloze-input:focus { border-bottom-color: var(--gold); }
+.cloze-input.has-answer { border-bottom-color: var(--gold); color: #1a5c2a; font-weight: 600; }
+
+/* Số câu + flag nhỏ bên dưới input */
+.cloze-input-meta {
+  display: flex; align-items: center; gap: 3px;
+}
+.cloze-q-num {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  color: rgba(212,175,55,0.7); line-height: 1;
+}
+.cloze-flag-btn {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 10px; padding: 0; opacity: 0.3;
+  transition: opacity var(--transition);
+  line-height: 1;
+}
+.cloze-flag-btn:hover { opacity: 0.7; }
+.cloze-flag-btn.flagged { opacity: 1; }
+
+/* Table completion */
+.cloze-table-wrap {
+  margin: 12px 0; overflow-x: auto;
+  border: 1px solid rgba(212,175,55,0.15); border-radius: 6px;
+}
+.cloze-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem;
+}
+.cloze-table caption {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink);
+  background: rgba(212,175,55,0.08); padding: 10px 16px;
+  text-align: center; border-bottom: 1px solid rgba(212,175,55,0.15);
+  caption-side: top;
+}
+.cloze-table th {
+  background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.12);
+  padding: 9px 14px; font-weight: 600; text-align: left;
+  font-size: 0.8rem; color: var(--ink);
+}
+.cloze-table td {
+  border: 1px solid rgba(45,52,54,0.08); padding: 8px 14px;
+  vertical-align: middle; line-height: 1.55; color: var(--ink);
+  font-size: 0.88rem;
+}
+.cloze-table tr:nth-child(even) td { background: rgba(212,175,55,0.02); }
+
+/* MCQ options */
+.mcq-options { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.mcq-option {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 7px 10px; border-radius: 5px;
+  cursor: pointer; transition: background var(--transition);
+  font-size: 0.88rem; line-height: 1.5;
+}
+.mcq-option:hover { background: rgba(212,175,55,0.07); }
+.mcq-option input[type="radio"],
+.mcq-option input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid rgba(45,52,54,0.3);
+  background: transparent; cursor: pointer; flex-shrink: 0;
+  margin-top: 2px;
+  transition: all var(--transition);
+  position: relative;
+}
+.mcq-option input[type="checkbox"] { border-radius: 3px; }
+.mcq-option input[type="radio"]:checked,
+.mcq-option input[type="checkbox"]:checked {
+  background: var(--gold); border-color: var(--gold);
+}
+.mcq-option input[type="radio"]:checked::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--navy); transform: translate(-50%,-50%);
+}
+.mcq-option input[type="checkbox"]:checked::after {
+  content: '✓'; position: absolute; top: 50%; left: 50%;
+  font-size: 10px; color: var(--navy); transform: translate(-50%,-50%);
+  line-height: 1;
+}
+.mcq-label { color: var(--ink); cursor: pointer; }
+.mcq-key { color: var(--gold); font-weight: 600; font-family: 'DM Mono', monospace; margin-right: 4px; min-width: 18px; }
+
+/* Table / Flow-chart wrapper */
+.q-table-wrap { margin: 12px 0; overflow-x: auto; }
+.q-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem;
+}
+.q-table th {
+  background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2);
+  padding: 8px 12px; font-weight: 600; text-align: left;
+  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--ink);
+}
+.q-table td {
+  border: 1px solid rgba(45,52,54,0.1); padding: 8px 12px;
+  vertical-align: top; line-height: 1.55;
+}
+
+/* Options list (A–H) for matching */
+.options-box {
+  background: rgba(212,175,55,0.05);
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: var(--radius); padding: 14px 16px;
+  margin: 14px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
+}
+.option-item { font-size: 0.86rem; line-height: 1.5; padding: 3px 0; }
+.option-key { color: var(--gold); font-weight: 700; margin-right: 4px; font-family: 'DM Mono', monospace; }
+.q-select {
+  background: transparent; border: none; border-bottom: 1.5px solid rgba(45,52,54,0.3);
+  outline: none; font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.9rem;
+  color: var(--ink); padding: 2px 4px; cursor: pointer;
+  transition: border-color var(--transition);
+}
+.q-select:focus { border-bottom-color: var(--gold); }
+.q-select.has-answer { border-bottom-color: var(--gold); color: #1a5c2a; font-weight: 600; }
+
+/* Part separator */
+.part-sep {
+  height: 1px; margin: 40px 48px;
+  background: linear-gradient(90deg, rgba(212,175,55,0.3), rgba(212,175,55,0.08), transparent);
+}
+
+/* ============================================================
+   FLAG OVERLAY PANEL
+   ============================================================ */
+.flag-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  align-items: flex-start; justify-content: flex-end; padding: 20px;
+}
+.flag-overlay.open { display: flex; }
+
+.flag-panel {
+  background: var(--navy); border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 10px; width: 340px; max-height: 80vh;
+  overflow-y: auto; box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+}
+.flag-panel-header {
+  padding: 18px 20px; border-bottom: 1px solid rgba(212,175,55,0.12);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.flag-panel-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; }
+.flag-panel-close {
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+  background: transparent; color: rgba(255,255,255,0.6); font-size: 1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+.flag-panel-close:hover { border-color: var(--gold); color: var(--gold); }
+.flag-panel-body { padding: 12px 0; }
+.flag-item {
+  padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap: 12px;
+  transition: background var(--transition); border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.flag-item:hover { background: rgba(212,175,55,0.07); }
+.flag-item-num {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500;
+  color: var(--flag-red); min-width: 36px;
+}
+.flag-item-ans { font-size: 0.82rem; color: rgba(255,255,255,0.65); flex: 1; font-style: italic; }
+.flag-empty { padding: 24px 20px; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.35); }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 600;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--navy); border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 12px; padding: 36px 40px; max-width: 420px; width: 100%;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  text-align: center;
+}
+.modal-icon { font-size: 2rem; margin-bottom: 16px; }
+.modal-title {
+  font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff;
+  margin-bottom: 10px;
+}
+.modal-body { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 28px; }
+.modal-body strong { color: var(--gold); }
+.modal-actions { display: flex; gap: 12px; justify-content: center; }
+.btn-modal-cancel {
+  padding: 10px 24px; background: transparent;
+  border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
+  border-radius: var(--radius); font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 0.88rem; cursor: pointer; transition: all var(--transition);
+}
+.btn-modal-cancel:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.btn-modal-confirm {
+  padding: 10px 28px;
+  background: linear-gradient(135deg, var(--gold) 0%, #b8960c 100%);
+  color: var(--navy); border: none; border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.88rem; font-weight: 700;
+  cursor: pointer; transition: opacity var(--transition);
+}
+.btn-modal-confirm:hover { opacity: 0.9; }
+
+/* ============================================================
+   RESULT SCREEN
+   ============================================================ */
+#screen-result {
+  min-height: 100vh; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  background: var(--cream); padding: 60px 24px;
+}
+
+.result-header { text-align: center; margin-bottom: 48px; }
+.result-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 4px; }
+.result-subtitle { font-size: 0.75rem; color: rgba(212,175,55,0.6); letter-spacing: 0.14em; text-transform: uppercase; }
+
+.result-card {
+  background: #fff; border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 12px; padding: 40px 48px;
+  max-width: 680px; width: 100%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  text-align: center; margin-bottom: 28px;
+}
+.result-score-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+.result-score {
+  font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 4px;
+}
+.result-score span { font-size: 1.5rem; color: var(--ink-soft); font-weight: 400; }
+.result-name { font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-top: 16px; }
+.result-class { font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; }
+.result-divider { height: 1px; background: rgba(212,175,55,0.15); margin: 24px 0; }
+.result-note { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; }
+
+.result-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; max-width: 680px; width: 100%; }
+
+.band-card {
+  background: #fff; border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 12px; padding: 28px 36px;
+  max-width: 680px; width: 100%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  margin-bottom: 28px;
+}
+.band-card-title {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px; text-align: center;
+}
+.band-highlight {
+  text-align: center; margin-bottom: 20px;
+}
+.band-highlight-score {
+  font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.band-highlight-label { font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; letter-spacing: 0.06em; }
+.band-divider { height: 1px; background: rgba(212,175,55,0.12); margin: 16px 0; }
+.band-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.band-table th {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-soft); font-weight: 600; padding: 6px 10px;
+  border-bottom: 1px solid rgba(212,175,55,0.15); text-align: center;
+}
+.band-table td {
+  padding: 5px 10px; text-align: center; border-bottom: 1px solid rgba(45,52,54,0.05);
+  color: var(--ink); font-family: 'DM Mono', monospace; font-size: 0.8rem;
+}
+.band-table tr.band-current td {
+  background: rgba(212,175,55,0.12); color: var(--gold);
+  font-weight: 700; border-radius: 4px;
+}
+.band-table tr:last-child td { border-bottom: none; }
+.btn-result {
+  padding: 12px 28px; border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition); letter-spacing: 0.04em;
+}
+.btn-result-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, #b8960c 100%);
+  color: var(--navy); border: none;
+}
+.btn-result-primary:hover { opacity: 0.9; }
+.btn-result-secondary {
+  background: transparent; border: 1.5px solid var(--gold); color: #b8960c;
+}
+.btn-result-secondary:hover { background: rgba(212,175,55,0.08); }
+
+/* ============================================================
+   ANSWER SHEET SCREEN
+   ============================================================ */
+#screen-answersheet {
+  min-height: 100vh; flex-direction: column;
+  align-items: center; background: var(--cream); padding: 48px 24px;
+}
+/* Answer Sheet — wide horizontal layout */
+#screen-answersheet {
+  background: #f7f6f4; padding: 40px 32px;
+}
+.answersheet-wrap { max-width: 1200px; width: 100%; }
+.answersheet-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 6px; flex-wrap: wrap; gap: 8px;
+}
+.answersheet-title {
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--ink); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.answersheet-meta { font-size: 0.75rem; color: var(--ink-soft); margin-top: 3px; }
+.answersheet-close-hint { font-size: 0.75rem; color: var(--ink-soft); cursor: default; }
+.as-topbar {
+  background: #fff; border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 6px; padding: 10px 16px;
+  font-size: 0.82rem; color: var(--ink); margin-bottom: 20px;
+}
+.as-topbar strong { color: var(--gold); }
+.answersheet-notice {
+  background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25);
+  border-radius: var(--radius); padding: 10px 16px;
+  font-size: 0.78rem; color: #7a6200; line-height: 1.6; margin-bottom: 20px;
+  text-align: center;
+}
+/* 4-column table layout */
+.as-table-wrap {
+  background: #fff; border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 8px; overflow: hidden;
+}
+.as-columns {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 2px solid rgba(212,175,55,0.15);
+}
+.as-col { border-right: 1px solid rgba(212,175,55,0.1); }
+.as-col:last-child { border-right: none; }
+.as-col-header {
+  display: grid; grid-template-columns: 44px 1fr;
+  padding: 8px 12px; border-bottom: 1px solid rgba(212,175,55,0.15);
+  background: rgba(212,175,55,0.05);
+  font-size: 0.68rem; font-weight: 700; color: var(--ink-soft);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.as-row {
+  display: grid; grid-template-columns: 44px 1fr;
+  padding: 7px 12px; border-bottom: 1px solid rgba(45,52,54,0.05);
+  align-items: center;
+}
+.as-row:last-child { border-bottom: none; }
+.as-row:nth-child(even) { background: rgba(212,175,55,0.03); }
+.as-row-num {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  color: var(--ink-soft); font-weight: 500;
+}
+.as-row-ans {
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.88rem;
+  font-weight: 600; color: var(--ink);
+}
+.as-row-ans.empty { color: rgba(45,52,54,0.2); font-weight: 400; font-style: italic; font-size: 0.78rem; }
+/* legacy unused */
+.as-part-label { display: none; }
+.as-grid { display: none; }
+.as-cell { display: none; }
+.as-divider { display: none; }
+.btn-back-review {
+  margin-top: 28px; padding: 12px 28px;
+  background: transparent; border: 1.5px solid rgba(45,52,54,0.2);
+  color: var(--ink-soft); border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition);
+}
+.btn-back-review:hover { border-color: var(--gold); color: #7a6200; }
+
+/* ============================================================
+   REVIEW SCREEN (read-only)
+   ============================================================ */
+#screen-review {
+  flex-direction: row; min-height: 100vh; background: var(--cream);
+}
+.review-sidebar-overlay {
+  /* Readonly badge pinned to sidebar bottom */
+  padding: 12px 20px 0;
+}
+.review-readonly-badge {
+  display: block; text-align: center;
+  padding: 6px 12px; background: rgba(225,112,85,0.15);
+  border: 1px solid rgba(225,112,85,0.4); border-radius: 20px;
+  font-size: 0.72rem; color: var(--flag-red); font-weight: 600; letter-spacing: 0.06em;
+}
+.review-main {
+  margin-left: var(--sidebar-w);
+  flex: 1; padding: 32px 0 100px;
+}
+
+/* Read-only inputs in review */
+.q-input[readonly] { cursor: default; border-bottom-color: rgba(212,175,55,0.4); }
+.mcq-option.readonly { cursor: default; pointer-events: none; }
+.q-select[disabled] { cursor: default; }
+
+/* ============================================================
+   LOADING SPINNER
+   ============================================================ */
+.spinner-overlay {
+  display: none; position: fixed; inset: 0; z-index: 900;
+  background: rgba(26,18,8,0.85); align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+}
+.spinner-overlay.open { display: flex; }
+.spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid rgba(212,175,55,0.2); border-top-color: var(--gold);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner-text { color: rgba(212,175,55,0.7); font-size: 0.85rem; letter-spacing: 0.08em; }
+
+/* ============================================================
+   PART TAB NAVIGATION
+   ============================================================ */
+.part-tabs {
+  display: flex; align-items: center; gap: 0;
+  padding: 0 48px;
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+  background: var(--cream);
+  position: sticky; top: 0; z-index: 10;
+}
+.part-tab {
+  padding: 14px 24px; cursor: pointer;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(45,52,54,0.45); border-bottom: 2px solid transparent;
+  transition: all var(--transition); position: relative; user-select: none;
+  background: none; border-top: none; border-left: none; border-right: none;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.part-tab:hover { color: var(--gold); }
+.part-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.part-tab .tab-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); margin-left: 6px; vertical-align: middle;
+  opacity: 0; transition: opacity var(--transition);
+}
+.part-tab.has-answers .tab-dot { opacity: 1; }
+
+.part-panel { display: none; }
+.part-panel.active { display: block; }
+
+.part-nav-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px 0;
+  margin-top: 8px;
+}
+.btn-part-nav {
+  padding: 9px 20px; border-radius: var(--radius);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.04em; cursor: pointer; transition: all var(--transition);
+  background: transparent; border: 1.5px solid rgba(212,175,55,0.35); color: var(--gold);
+}
+.btn-part-nav:hover { background: var(--gold-dim); border-color: var(--gold); }
+.btn-part-nav:disabled { opacity: 0.25; cursor: default; }
+.part-nav-label { font-size: 0.72rem; color: var(--ink-soft); letter-spacing: 0.06em; }
+
+/* ============================================================
+   RESPONSIVE / SCROLL HELPERS
+   ============================================================ */
+[id^="anchor-"] { scroll-margin-top: 72px; }
+
+@media (max-width: 900px) {
+  :root { --sidebar-w: 220px; }
+  .q-block { padding: 0 24px; }
+  .part-header { padding: 32px 24px 0; }
+  .q-section-label { padding: 20px 24px 10px; }
+  .part-sep { margin: 32px 24px; }
+  .as-grid { grid-template-columns: repeat(3,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SCREEN: LOGIN
+     ============================================================ -->
+<div id="screen-login" class="screen active">
+  <div class="login-bg-pattern"></div>
+  <div class="login-bg-text" id="login-bg-text"></div>
+  <div class="login-card">
+    <div class="login-logo">G.EDU <span>IELTS LISTENING</span></div>
+    <div class="login-divider"></div>
+    <div class="login-notice">
+      Vui lòng nhập Họ tên và Lớp bằng <strong style="color:#D4AF37">CHỮ IN HOA</strong>. Thông tin chính xác sẽ giúp hệ thống ghi nhận và khôi phục bài làm nếu bạn thoát hoặc tải lại trang.
+    </div>
+    <div class="login-field">
+      <label>Họ và tên học sinh</label>
+      <input type="text" id="input-name" placeholder="HỌ VÀ TÊN" autocomplete="off" />
+    </div>
+    <div class="login-field">
+      <label>Lớp học</label>
+      <input type="text" id="input-class" placeholder="LỚP HỌC" autocomplete="off" />
+    </div>
+    <button class="btn-start" onclick="handleLogin()">Tiếp tục</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN: READY (start countdown)
+     ============================================================ -->
+<div id="screen-ready" class="screen">
+  <div class="ready-bg"></div>
+  <div class="ready-card">
+    <div class="ready-logo">G.EDU</div>
+    <div class="ready-test-name" id="ready-test-name"><!-- TEST_NAME --></div>
+    <div class="ready-student" id="ready-student-name"></div>
+    <div class="ready-class" id="ready-student-class"></div>
+    <div class="ready-divider"></div>
+    <div class="ready-note">
+      ⚠️ Bấm vào <strong style="color:#D4AF37">BẮT ĐẦU LÀM BÀI</strong> khi giáo viên mở audio nghe.<br>
+      Đồng hồ sẽ bắt đầu đếm ngược <strong style="color:#D4AF37">35 phút</strong> ngay khi bạn bấm. Sau 30 phút làm bài nghe, bạn sẽ có <strong style="color:#D4AF37">5 phút</strong> để xem lại bài.
+    </div>
+    <button class="btn-begin" onclick="handleBegin()">▶ BẮT ĐẦU LÀM BÀI</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN: EXAM
+     ============================================================ -->
+<div id="screen-exam" class="screen">
+
+  <!-- Highlight Toolbar — contextual popup, shown on text selection -->
+  <div class="hl-toolbar" id="hl-toolbar">
+    <button class="hl-btn active" data-color="yellow" title="Vàng" onclick="selectHLColor('yellow',this)"></button>
+    <button class="hl-btn" data-color="green" title="Xanh lá" onclick="selectHLColor('green',this)"></button>
+    <button class="hl-btn" data-color="blue" title="Xanh dương" onclick="selectHLColor('blue',this)"></button>
+    <button class="hl-btn" data-color="pink" title="Hồng" onclick="selectHLColor('pink',this)"></button>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="g-logo">G.EDU</div>
+      <div class="g-test-name" id="sidebar-test-name"><!-- TEST_NAME --></div>
+    </div>
+    <div class="sidebar-student">
+      <div class="s-name" id="sidebar-name"></div>
+      <div class="s-class" id="sidebar-class"></div>
+    </div>
+    <div class="sidebar-timer">
+      <div class="timer-label">Thời gian còn lại</div>
+      <div class="timer-display" id="timer-display">35:00</div>
+    </div>
+    <div class="sidebar-map">
+      <div class="map-label">Question Map</div>
+      <div class="q-grid" id="q-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+    <div class="sidebar-actions">
+      <button class="btn-flag-view" onclick="openFlagPanel()">🚩 Xem câu đánh dấu</button>
+      <button class="btn-submit" onclick="openSubmitModal()">NỘP BÀI</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" id="main-content">
+
+    <!-- TAB BAR -->
+    <div class="part-tabs">
+      <button class="part-tab active" data-tab="1" onclick="switchPart(1)">Part 1 <span class="tab-dot"></span></button>
+      <button class="part-tab" data-tab="2" onclick="switchPart(2)">Part 2 <span class="tab-dot"></span></button>
+      <button class="part-tab" data-tab="3" onclick="switchPart(3)">Part 3 <span class="tab-dot"></span></button>
+      <button class="part-tab" data-tab="4" onclick="switchPart(4)">Part 4 <span class="tab-dot"></span></button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         AI STUDIO: ĐIỀN NỘI DUNG ĐỀ BÀI VÀO ĐÂY
+         Mỗi part nằm trong <div class="part-panel" data-part="N">
+
+         CÓ 2 DẠNG LAYOUT:
+
+         [A] DẠNG LIST (MCQ, câu hỏi rời):
+             Dùng: <div class="q-block" id="anchor-N"> ... </div>
+
+         [B] DẠNG CLOZE / COMPLETION (note, form, table):
+             Dùng: <div class="cloze-block"> ... </div>
+             Input nằm INLINE trong câu văn, số câu hiện nhỏ bên dưới.
+
+         VÍ DỤ DẠNG NOTE COMPLETION:
+         ─────────────────────────────
+         <div class="cloze-block">
+           <div class="cloze-section-title">Alma Park</div>
+           <div class="cloze-line">
+             A family ticket is $
+             <span class="cloze-input-wrap">
+               <input type="text" class="cloze-input q-input" id="ans-1" data-q="1" oninput="handleInput(1,this)" placeholder="..." />
+               <span class="cloze-input-meta">
+                 <span class="cloze-q-num">(1)</span>
+                 <button class="cloze-flag-btn q-flag-btn" data-q="1" onclick="toggleFlag(1)">🚩</button>
+               </span>
+             </span>
+           </div>
+           <div class="cloze-line" id="anchor-2">
+             The fastest bus takes about
+             <span class="cloze-input-wrap">
+               <input type="text" class="cloze-input q-input" id="ans-2" data-q="2" oninput="handleInput(2,this)" placeholder="..." />
+               <span class="cloze-input-meta">
+                 <span class="cloze-q-num">(2)</span>
+                 <button class="cloze-flag-btn q-flag-btn" data-q="2" onclick="toggleFlag(2)">🚩</button>
+               </span>
+             </span>
+             minutes.
+           </div>
+         </div>
+
+         VÍ DỤ DẠNG TABLE COMPLETION:
+         ─────────────────────────────
+         <div class="cloze-block">
+           <div class="cloze-table-wrap">
+             <table class="cloze-table">
+               <caption>PLAN FOR STUDY SYNDICATE</caption>
+               <thead>
+                 <tr><th>Date</th><th>Geology Topic</th><th>Name of Presenter</th></tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>9th May</td>
+                   <td id="anchor-23">
+                     <span class="cloze-input-wrap">
+                       <input type="text" class="cloze-input q-input" id="ans-23" data-q="23" oninput="handleInput(23,this)" placeholder="..." />
+                       <span class="cloze-input-meta">
+                         <span class="cloze-q-num">(23)</span>
+                         <button class="cloze-flag-btn q-flag-btn" data-q="23" onclick="toggleFlag(23)">🚩</button>
+                       </span>
+                     </span>
+                   </td>
+                   <td>Bob</td>
+                 </tr>
+                 <tr>
+                   <td id="anchor-24">
+                     <span class="cloze-input-wrap">
+                       <input type="text" class="cloze-input q-input" id="ans-24" data-q="24" oninput="handleInput(24,this)" placeholder="..." />
+                       <span class="cloze-input-meta">
+                         <span class="cloze-q-num">(24)</span>
+                         <button class="cloze-flag-btn q-flag-btn" data-q="24" onclick="toggleFlag(24)">🚩</button>
+                       </span>
+                     </span>
+                   </td>
+                   <td>Glaciated areas</td>
+                   <td>Andy</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+         </div>
+
+         LƯU Ý:
+         - id="anchor-N" đặt trên PHẦN TỬ CHA gần nhất (td, div.cloze-line...)
+         - class="q-input" GIỮ NGUYÊN trên input để JS nhận diện
+         - class="q-flag-btn" GIỮ NGUYÊN trên flag button
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- ─── PART 1 ─── -->
+    <div class="part-panel active" data-part="1">
+      <div class="part-header">
+        <div class="part-tag">Part 1</div>
+        <div class="part-title">Winsham Farm Centre</div>
+        <div class="part-instruction">Questions 1–8. Choose the correct letter, <strong>A, B or C</strong>.</div>
+        <div class="part-instruction">Questions 9–10. Complete the notes below. Write <strong>ONE WORD AND/OR NUMBERS</strong> for each answer.</div>
+        <div class="part-divider"></div>
+      </div>
+
+      <div class="q-section-label">Questions 1 – 8</div>
+
+      <div class="q-block">
+        <div class="q-row">
+          <div class="q-num">Ex</div>
+          <div style="width:22px"></div>
+          <div class="q-content">
+            <div class="q-text">The man wants to visit the centre with</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" disabled /><span class="mcq-label"><span class="mcq-key">A</span>a friends</span></label>
+              <label class="mcq-option"><input type="radio" checked disabled /><span class="mcq-label"><span class="mcq-key">B</span>relative</span></label>
+              <label class="mcq-option"><input type="radio" disabled /><span class="mcq-label"><span class="mcq-key">C</span>colleagues</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-1">
+        <div class="q-row">
+          <div class="q-num">1</div>
+          <button class="q-flag-btn" data-q="1" onclick="toggleFlag(1)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">The centre has enough accommodation for</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q1" value="A" onchange="handleRadio(1,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>18 people.</span></label>
+              <label class="mcq-option"><input type="radio" name="q1" value="B" onchange="handleRadio(1,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>20 people.</span></label>
+              <label class="mcq-option"><input type="radio" name="q1" value="C" onchange="handleRadio(1,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>38 people.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-2">
+        <div class="q-row">
+          <div class="q-num">2</div>
+          <button class="q-flag-btn" data-q="2" onclick="toggleFlag(2)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">The meeting room is currently</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q2" value="A" onchange="handleRadio(2,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>unavailable.</span></label>
+              <label class="mcq-option"><input type="radio" name="q2" value="B" onchange="handleRadio(2,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>flooded.</span></label>
+              <label class="mcq-option"><input type="radio" name="q2" value="C" onchange="handleRadio(2,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>booked.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-3">
+        <div class="q-row">
+          <div class="q-num">3</div>
+          <button class="q-flag-btn" data-q="3" onclick="toggleFlag(3)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Visitors must tell the centre in advance if they want to</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q3" value="A" onchange="handleRadio(3,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>use the centre’s kitchen.</span></label>
+              <label class="mcq-option"><input type="radio" name="q3" value="B" onchange="handleRadio(3,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>have meals cooked for them.</span></label>
+              <label class="mcq-option"><input type="radio" name="q3" value="C" onchange="handleRadio(3,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>eat at restaurants outside.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-4">
+        <div class="q-row">
+          <div class="q-num">4</div>
+          <button class="q-flag-btn" data-q="4" onclick="toggleFlag(4)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">All visitors on the tour of the farm can</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q4" value="A" onchange="handleRadio(4,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>get information about organic farming.</span></label>
+              <label class="mcq-option"><input type="radio" name="q4" value="B" onchange="handleRadio(4,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>help to feed the animals.</span></label>
+              <label class="mcq-option"><input type="radio" name="q4" value="C" onchange="handleRadio(4,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>watch a tractor demonstration.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-5">
+        <div class="q-row">
+          <div class="q-num">5</div>
+          <button class="q-flag-btn" data-q="5" onclick="toggleFlag(5)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">On the survival course, people have to</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q5" value="A" onchange="handleRadio(5,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>learn to use a map.</span></label>
+              <label class="mcq-option"><input type="radio" name="q5" value="B" onchange="handleRadio(5,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>find their own food.</span></label>
+              <label class="mcq-option"><input type="radio" name="q5" value="C" onchange="handleRadio(5,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>run through woodland.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-6">
+        <div class="q-row">
+          <div class="q-num">6</div>
+          <button class="q-flag-btn" data-q="6" onclick="toggleFlag(6)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">From the centre, it is easy to walk to</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q6" value="A" onchange="handleRadio(6,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>Exmoor National Park.</span></label>
+              <label class="mcq-option"><input type="radio" name="q6" value="B" onchange="handleRadio(6,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>the beach.</span></label>
+              <label class="mcq-option"><input type="radio" name="q6" value="C" onchange="handleRadio(6,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>a cycling route.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-7">
+        <div class="q-row">
+          <div class="q-num">7</div>
+          <button class="q-flag-btn" data-q="7" onclick="toggleFlag(7)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">If the weather is bad visitors can go to a</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q7" value="A" onchange="handleRadio(7,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>cinema.</span></label>
+              <label class="mcq-option"><input type="radio" name="q7" value="B" onchange="handleRadio(7,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>theatre.</span></label>
+              <label class="mcq-option"><input type="radio" name="q7" value="C" onchange="handleRadio(7,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>museum.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-8">
+        <div class="q-row">
+          <div class="q-num">8</div>
+          <button class="q-flag-btn" data-q="8" onclick="toggleFlag(8)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Groups who wish to stay at the centre must pay</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q8" value="A" onchange="handleRadio(8,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>part of the cost in advance.</span></label>
+              <label class="mcq-option"><input type="radio" name="q8" value="B" onchange="handleRadio(8,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>all of the cost in advance.</span></label>
+              <label class="mcq-option"><input type="radio" name="q8" value="C" onchange="handleRadio(8,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>all of the cost on arrival.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-section-label">Questions 9 – 10</div>
+
+      <div class="cloze-block">
+        <div class="cloze-section-title">Complete the notes below.</div>
+        <div class="cloze-line">Write ONE WORD AND/OR NUMBERS for each answer.</div>
+        <table style="border:none;border-collapse:collapse;font-size:0.92rem;line-height:2;margin:12px 0;">
+          <tr>
+            <td style="vertical-align:top;padding:2px 16px 2px 0;white-space:nowrap;color:var(--ink);">Address:</td>
+            <td style="padding:2px 0;color:var(--ink);">Winsham Farm</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding:2px 0;color:var(--ink);" id="anchor-9">
+              Rd.
+              <span class="cloze-input-wrap">
+                <input type="text" class="cloze-input q-input" id="ans-9" data-q="9" oninput="handleInput(9,this)" placeholder="..." />
+                <span class="cloze-input-meta">
+                  <span class="cloze-q-num">(9)</span>
+                  <button class="cloze-flag-btn q-flag-btn" data-q="9" onclick="toggleFlag(9)">🚩</button>
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="padding:2px 0;color:var(--ink);">near Sherbone</td>
+          </tr>
+          <tr>
+            <td style="vertical-align:top;padding:2px 16px 2px 0;white-space:nowrap;color:var(--ink);">Postcode:</td>
+            <td style="padding:2px 0;color:var(--ink);" id="anchor-10">
+              <span class="cloze-input-wrap">
+                <input type="text" class="cloze-input q-input" id="ans-10" data-q="10" oninput="handleInput(10,this)" placeholder="..." />
+                <span class="cloze-input-meta">
+                  <span class="cloze-q-num">(10)</span>
+                  <button class="cloze-flag-btn q-flag-btn" data-q="10" onclick="toggleFlag(10)">🚩</button>
+                </span>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="part-nav-bar">
+        <button class="btn-part-nav" disabled>← Part trước</button>
+        <span class="part-nav-label">Questions 1 – 10</span>
+        <button class="btn-part-nav" onclick="switchPart(2)">Part 2 →</button>
+      </div>
+      <div style="height:40px"></div>
+    </div>
+
+    <!-- ─── PART 2 ─── -->
+    <div class="part-panel" data-part="2">
+      <div class="part-header">
+        <div class="part-tag">Part 2</div>
+        <div class="part-title">Vacation Jobs</div>
+        <div class="part-instruction">Questions 11–16. Complete the table below. Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</div>
+        <div class="part-instruction">Questions 17–20. Choose the correct letter, <strong>A, B or C</strong>.</div>
+        <div class="part-divider"></div>
+      </div>
+
+      <div class="q-section-label">Questions 11 – 16</div>
+
+      <div class="cloze-block">
+        <div class="cloze-table-wrap">
+          <table class="cloze-table">
+            <caption>Vacation Job Comparison</caption>
+            <thead>
+              <tr>
+                <th>Vacation Job</th>
+                <th>Main Advantage</th>
+                <th>Main Disadvantage</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Stocktaking</td>
+                <td id="anchor-11">
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-11" data-q="11" oninput="handleInput(11,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(11)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="11" onclick="toggleFlag(11)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+                <td>tiring</td>
+                <td id="anchor-12">
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-12" data-q="12" oninput="handleInput(12,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(12)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="12" onclick="toggleFlag(12)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>Office work</td>
+                <td>air-conditioning</td>
+                <td id="anchor-13">
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-13" data-q="13" oninput="handleInput(13,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(13)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="13" onclick="toggleFlag(13)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+                <td>
+                  choose a
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-14" data-q="14" oninput="handleInput(14,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(14)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="14" onclick="toggleFlag(14)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>Theme park attendant</td>
+                <td id="anchor-15">
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-15" data-q="15" oninput="handleInput(15,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(15)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="15" onclick="toggleFlag(15)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+                <td>rude customers</td>
+                <td id="anchor-16">
+                  <span class="cloze-input-wrap">
+                    <input type="text" class="cloze-input q-input" id="ans-16" data-q="16" oninput="handleInput(16,this)" placeholder="..." />
+                    <span class="cloze-input-meta">
+                      <span class="cloze-q-num">(16)</span>
+                      <button class="cloze-flag-btn q-flag-btn" data-q="16" onclick="toggleFlag(16)">🚩</button>
+                    </span>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="q-section-label">Questions 17 – 20</div>
+
+      <div class="q-block" id="anchor-17">
+        <div class="q-row">
+          <div class="q-num">17</div>
+          <button class="q-flag-btn" data-q="17" onclick="toggleFlag(17)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Peter learned about the job</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q17" value="A" onchange="handleRadio(17,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>from a college friend.</span></label>
+              <label class="mcq-option"><input type="radio" name="q17" value="B" onchange="handleRadio(17,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>on the computer.</span></label>
+              <label class="mcq-option"><input type="radio" name="q17" value="C" onchange="handleRadio(17,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>from a student job centre.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-18">
+        <div class="q-row">
+          <div class="q-num">18</div>
+          <button class="q-flag-btn" data-q="18" onclick="toggleFlag(18)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Peter mainly enjoyed the job because it was</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q18" value="A" onchange="handleRadio(18,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>easy.</span></label>
+              <label class="mcq-option"><input type="radio" name="q18" value="B" onchange="handleRadio(18,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>challenging.</span></label>
+              <label class="mcq-option"><input type="radio" name="q18" value="C" onchange="handleRadio(18,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>unusual.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-19">
+        <div class="q-row">
+          <div class="q-num">19</div>
+          <button class="q-flag-btn" data-q="19" onclick="toggleFlag(19)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">The job’s most interesting aspect was</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q19" value="A" onchange="handleRadio(19,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>learning about the environment.</span></label>
+              <label class="mcq-option"><input type="radio" name="q19" value="B" onchange="handleRadio(19,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>working with children.</span></label>
+              <label class="mcq-option"><input type="radio" name="q19" value="C" onchange="handleRadio(19,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>caring for the animals.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-20">
+        <div class="q-row">
+          <div class="q-num">20</div>
+          <button class="q-flag-btn" data-q="20" onclick="toggleFlag(20)" title="Đánh dấu câu này">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Peter has decided that next vacation he</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q20" value="A" onchange="handleRadio(20,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>won’t take a job.</span></label>
+              <label class="mcq-option"><input type="radio" name="q20" value="B" onchange="handleRadio(20,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>will work at the zoo.</span></label>
+              <label class="mcq-option"><input type="radio" name="q20" value="C" onchange="handleRadio(20,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>will work elsewhere.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part-nav-bar">
+        <button class="btn-part-nav" onclick="switchPart(1)">← Part 1</button>
+        <span class="part-nav-label">Questions 11 – 20</span>
+        <button class="btn-part-nav" onclick="switchPart(3)">Part 3 →</button>
+      </div>
+      <div style="height:40px"></div>
+    </div>
+
+    <!-- ─── PART 3 ─── -->
+    <div class="part-panel" data-part="3">
+      <div class="part-header">
+        <div class="part-tag">Part 3</div>
+        <div class="part-title">Voice Training for Drama Students</div>
+        <div class="part-instruction">Questions 21–26. Choose the correct letter, <strong>A, B or C</strong>.</div>
+        <div class="part-instruction">Questions 27–30. Choose <strong>FOUR</strong> correct answers, A–G, and match them to the textbooks.</div>
+        <div class="part-divider"></div>
+      </div>
+
+      <div class="q-section-label">Questions 21 – 26</div>
+
+      <div class="q-block" id="anchor-21">
+        <div class="q-row">
+          <div class="q-num">21</div>
+          <button class="q-flag-btn" data-q="21" onclick="toggleFlag(21)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Ed is giving the voice coaching workshop in order to get</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q21" value="A" onchange="handleRadio(21,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>a new job.</span></label>
+              <label class="mcq-option"><input type="radio" name="q21" value="B" onchange="handleRadio(21,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>a qualification.</span></label>
+              <label class="mcq-option"><input type="radio" name="q21" value="C" onchange="handleRadio(21,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>a promotion.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-22">
+        <div class="q-row">
+          <div class="q-num">22</div>
+          <button class="q-flag-btn" data-q="22" onclick="toggleFlag(22)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">According to Fiona, the seating pattern that Ed chooses</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q22" value="A" onchange="handleRadio(22,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>should be illustrated visually.</span></label>
+              <label class="mcq-option"><input type="radio" name="q22" value="B" onchange="handleRadio(22,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>has to be explained in detail.</span></label>
+              <label class="mcq-option"><input type="radio" name="q22" value="C" onchange="handleRadio(22,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>is not particularly important.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-23">
+        <div class="q-row">
+          <div class="q-num">23</div>
+          <button class="q-flag-btn" data-q="23" onclick="toggleFlag(23)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Fiona and Ed agree that in the first activity, the students</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q23" value="A" onchange="handleRadio(23,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>may feel uncomfortable.</span></label>
+              <label class="mcq-option"><input type="radio" name="q23" value="B" onchange="handleRadio(23,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>like to make group contact.</span></label>
+              <label class="mcq-option"><input type="radio" name="q23" value="C" onchange="handleRadio(23,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>must focus on themselves.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-24">
+        <div class="q-row">
+          <div class="q-num">24</div>
+          <button class="q-flag-btn" data-q="24" onclick="toggleFlag(24)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Fiona and Ed agree that in the second activity, Ed should</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q24" value="A" onchange="handleRadio(24,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>insist which students work together.</span></label>
+              <label class="mcq-option"><input type="radio" name="q24" value="B" onchange="handleRadio(24,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>tell students to prepare a speech.</span></label>
+              <label class="mcq-option"><input type="radio" name="q24" value="C" onchange="handleRadio(24,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>include a focus on breath control.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-25">
+        <div class="q-row">
+          <div class="q-num">25</div>
+          <button class="q-flag-btn" data-q="25" onclick="toggleFlag(25)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">What does Fiona suggest about working in a big space?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q25" value="A" onchange="handleRadio(25,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>It could be outside or inside.</span></label>
+              <label class="mcq-option"><input type="radio" name="q25" value="B" onchange="handleRadio(25,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>It is best to go to somewhere like a park.</span></label>
+              <label class="mcq-option"><input type="radio" name="q25" value="C" onchange="handleRadio(25,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>It is useful for getting actors to shout.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-26">
+        <div class="q-row">
+          <div class="q-num">26</div>
+          <button class="q-flag-btn" data-q="26" onclick="toggleFlag(26)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">What does Fiona think of Ed's selection of texts?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="radio" name="q26" value="A" onchange="handleRadio(26,'A')" /><span class="mcq-label"><span class="mcq-key">A</span>It should include more classical texts.</span></label>
+              <label class="mcq-option"><input type="radio" name="q26" value="B" onchange="handleRadio(26,'B')" /><span class="mcq-label"><span class="mcq-key">B</span>It needs to focus on a single emotion.</span></label>
+              <label class="mcq-option"><input type="radio" name="q26" value="C" onchange="handleRadio(26,'C')" /><span class="mcq-label"><span class="mcq-key">C</span>It has to cover a wider range.</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-section-label">Questions 27 – 30</div>
+
+      <div class="q-block">
+        <div class="q-row">
+          <div class="q-num"> </div>
+          <div style="width:22px"></div>
+          <div class="q-content">
+            <div class="q-text">What disadvantages do the speakers identify for each of the following textbooks?</div>
+            <div class="q-text">Choose FOUR correct answers, A–G, next to questions 27–30.</div>
+            <div class="options-box">
+              <div class="option-item"><span class="option-key">A</span>too expensive</div>
+              <div class="option-item"><span class="option-key">B</span>too limited</div>
+              <div class="option-item"><span class="option-key">C</span>prejudiced</div>
+              <div class="option-item"><span class="option-key">D</span>unrealistic</div>
+              <div class="option-item"><span class="option-key">E</span>out of date</div>
+              <div class="option-item"><span class="option-key">F</span>too detailed</div>
+              <div class="option-item"><span class="option-key">G</span>unavailable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-27">
+        <div class="q-row">
+          <div class="q-num">27</div>
+          <button class="q-flag-btn" data-q="27" onclick="toggleFlag(27)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Vocal Instruction
+              <select class="q-select" id="ans-27" data-q="27" onchange="handleInput(27,this)">
+                <option value="">Select</option>
+                <option value="A">A - too expensive</option><option value="B">B - too limited</option><option value="C">C - prejudiced</option>
+                <option value="D">D - unrealistic</option><option value="E">E - out of date</option><option value="F">F - too detailed</option><option value="G">G - unavailable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-28">
+        <div class="q-row">
+          <div class="q-num">28</div>
+          <button class="q-flag-btn" data-q="28" onclick="toggleFlag(28)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Improve Your Accent
+              <select class="q-select" id="ans-28" data-q="28" onchange="handleInput(28,this)">
+                <option value="">Select</option>
+                <option value="A">A - too expensive</option><option value="B">B - too limited</option><option value="C">C - prejudiced</option>
+                <option value="D">D - unrealistic</option><option value="E">E - out of date</option><option value="F">F - too detailed</option><option value="G">G - unavailable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-29">
+        <div class="q-row">
+          <div class="q-num">29</div>
+          <button class="q-flag-btn" data-q="29" onclick="toggleFlag(29)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Actors' Handbook
+              <select class="q-select" id="ans-29" data-q="29" onchange="handleInput(29,this)">
+                <option value="">Select</option>
+                <option value="A">A - too expensive</option><option value="B">B - too limited</option><option value="C">C - prejudiced</option>
+                <option value="D">D - unrealistic</option><option value="E">E - out of date</option><option value="F">F - too detailed</option><option value="G">G - unavailable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-block" id="anchor-30">
+        <div class="q-row">
+          <div class="q-num">30</div>
+          <button class="q-flag-btn" data-q="30" onclick="toggleFlag(30)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Confident Voice Delivery
+              <select class="q-select" id="ans-30" data-q="30" onchange="handleInput(30,this)">
+                <option value="">Select</option>
+                <option value="A">A - too expensive</option><option value="B">B - too limited</option><option value="C">C - prejudiced</option>
+                <option value="D">D - unrealistic</option><option value="E">E - out of date</option><option value="F">F - too detailed</option><option value="G">G - unavailable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part-nav-bar">
+        <button class="btn-part-nav" onclick="switchPart(2)">← Part 2</button>
+        <span class="part-nav-label">Questions 21 – 30</span>
+        <button class="btn-part-nav" onclick="switchPart(4)">Part 4 →</button>
+      </div>
+      <div style="height:40px"></div>
+    </div>
+
+    <!-- ─── PART 4 ─── -->
+    <div class="part-panel" data-part="4">
+      <div class="part-header">
+        <div class="part-tag">Part 4</div>
+        <div class="part-title">Food Safety Standards</div>
+        <div class="part-instruction">Questions 31–40. Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</div>
+        <div class="part-divider"></div>
+      </div>
+
+      <div class="q-section-label">Questions 31 – 40</div>
+
+      <div class="cloze-block">
+        <div class="cloze-section-title">Risk assessment</div>
+        <div class="cloze-line">Scientists have to consider potential problems with:</div>
+        <div class="cloze-line" id="anchor-31">● the product's
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-31" data-q="31" oninput="handleInput(31,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(31)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="31" onclick="toggleFlag(31)">🚩</button>
+            </span>
+          </span>
+          (could they attract harmful bacteria?)
+        </div>
+        <div class="cloze-line" id="anchor-32">● method of preparation (will it eliminate harmful micro-organisms?)</div>
+        <div class="cloze-line">● how products are
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-32" data-q="32" oninput="handleInput(32,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(32)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="32" onclick="toggleFlag(32)">🚩</button>
+            </span>
+          </span>
+          and distributed
+        </div>
+        <div class="cloze-line" id="anchor-33">● supermarkets (e.g. changes in
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-33" data-q="33" oninput="handleInput(33,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(33)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="33" onclick="toggleFlag(33)">🚩</button>
+            </span>
+          </span>
+          affecting the condition of frozen food)
+        </div>
+        <div class="cloze-line">● end-users (how is food usually handled in the home?)</div>
+
+        <div class="cloze-section-title">Factors affecting food consumption</div>
+        <div class="cloze-line">● Legislation</div>
+        <div class="cloze-line">● Consumer attitudes</div>
+        <div class="cloze-line" id="anchor-34">e.g. dislike of additives → growth of the
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-34" data-q="34" oninput="handleInput(34,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(34)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="34" onclick="toggleFlag(34)">🚩</button>
+            </span>
+          </span>
+          food market in Australia
+        </div>
+
+        <div class="cloze-section-title">The food industry</div>
+        <div class="cloze-line" id="anchor-35">● supermarkets may use price or
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-35" data-q="35" oninput="handleInput(35,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(35)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="35" onclick="toggleFlag(35)">🚩</button>
+            </span>
+          </span>
+          as their selling strategy (but the main concern is profitability)
+        </div>
+
+        <div class="cloze-section-title">The mass media</div>
+        <div class="cloze-line" id="anchor-36">● now the main source of
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-36" data-q="36" oninput="handleInput(36,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(36)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="36" onclick="toggleFlag(36)">🚩</button>
+            </span>
+          </span>
+          for many
+        </div>
+        <div class="cloze-line">● negative effect because not objective:</div>
+        <div class="cloze-line" id="anchor-37">○ concern for
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-37" data-q="37" oninput="handleInput(37,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(37)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="37" onclick="toggleFlag(37)">🚩</button>
+            </span>
+          </span>
+        </div>
+        <div class="cloze-line" id="anchor-38">○ news is now a form of
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-38" data-q="38" oninput="handleInput(38,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(38)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="38" onclick="toggleFlag(38)">🚩</button>
+            </span>
+          </span>
+          which can mislead the public
+        </div>
+        <div class="cloze-line" id="anchor-39">● few programmes deal with food safety or
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-39" data-q="39" oninput="handleInput(39,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(39)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="39" onclick="toggleFlag(39)">🚩</button>
+            </span>
+          </span>
+        </div>
+
+        <div class="cloze-section-title">Personal opinion</div>
+        <div class="cloze-line" id="anchor-40">Importance of education: as with benefits of exercise, many children can influence their
+          <span class="cloze-input-wrap">
+            <input type="text" class="cloze-input q-input" id="ans-40" data-q="40" oninput="handleInput(40,this)" placeholder="..." />
+            <span class="cloze-input-meta">
+              <span class="cloze-q-num">(40)</span>
+              <button class="cloze-flag-btn q-flag-btn" data-q="40" onclick="toggleFlag(40)">🚩</button>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="part-nav-bar">
+        <button class="btn-part-nav" onclick="switchPart(3)">← Part 3</button>
+        <span class="part-nav-label">Questions 31 – 40</span>
+        <button class="btn-part-nav" disabled>Part tiếp →</button>
+      </div>
+      <div style="height:40px"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Flag Overlay Panel -->
+<div class="flag-overlay" id="flag-overlay" onclick="closeFlagPanelOuter(event)">
+  <div class="flag-panel">
+    <div class="flag-panel-header">
+      <span class="flag-panel-title">🚩 Câu đã đánh dấu</span>
+      <button class="flag-panel-close" onclick="closeFlagPanel()">✕</button>
+    </div>
+    <div class="flag-panel-body" id="flag-panel-body"></div>
+  </div>
+</div>
+
+<!-- Submit Modal -->
+<div class="modal-overlay" id="modal-submit">
+  <div class="modal-box">
+    <div class="modal-icon">📋</div>
+    <div class="modal-title">Xác nhận nộp bài</div>
+    <div class="modal-body" id="modal-submit-body">Bạn còn <strong id="modal-unanswered">0</strong> câu chưa trả lời. Bạn có chắc muốn nộp bài?</div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeModal('modal-submit')">Làm tiếp</button>
+      <button class="btn-modal-confirm" onclick="submitExam()">Nộp bài</button>
+    </div>
+  </div>
+</div>
+
+<!-- Auto-submit Modal -->
+<div class="modal-overlay" id="modal-timeout">
+  <div class="modal-box">
+    <div class="modal-icon">⏰</div>
+    <div class="modal-title">Hết giờ!</div>
+    <div class="modal-body">Thời gian làm bài đã kết thúc. Hệ thống sẽ tự động nộp bài của bạn.</div>
+    <div class="modal-actions">
+      <button class="btn-modal-confirm" onclick="submitExam()">Nộp bài ngay</button>
+    </div>
+  </div>
+</div>
+
+<!-- Spinner -->
+<div class="spinner-overlay" id="spinner">
+  <div class="spinner"></div>
+  <div class="spinner-text">Đang gửi bài...</div>
+</div>
+
+<!-- ============================================================
+     SCREEN: RESULT
+     ============================================================ -->
+<div id="screen-result" class="screen">
+  <div class="result-header">
+    <div class="result-logo">G.EDU</div>
+    <div class="result-subtitle" id="result-test-name-display"></div>
+  </div>
+  <div class="result-card">
+    <div class="result-score-label">Kết quả bài thi</div>
+    <div class="result-score" id="result-score-display">—<span>/40</span></div>
+    <div class="result-name" id="result-name-display"></div>
+    <div class="result-class" id="result-class-display"></div>
+    <div class="result-divider"></div>
+    <div class="result-note">Điểm đã được ghi nhận.</div>
+  </div>
+
+  <!-- Band Score Card -->
+  <div class="band-card">
+    <div class="band-card-title">Quy đổi Band Score</div>
+    <div class="band-highlight">
+      <div class="band-highlight-score" id="band-score-display">—</div>
+      <div class="band-highlight-label">Band ước tính của bạn</div>
+    </div>
+  </div>
+  <div class="result-btns">
+    <button class="btn-result btn-result-primary" onclick="showAnswerSheet()">📄 Xem Answer Sheet</button>
+    <button class="btn-result btn-result-secondary" onclick="showReview()">👁 Xem lại bài làm</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN: ANSWER SHEET
+     ============================================================ -->
+<div id="screen-answersheet" class="screen">
+  <div class="answersheet-wrap">
+    <div class="answersheet-header">
+      <div>
+        <div class="answersheet-title">Phiếu trả lời — Answer Sheet</div>
+        <div class="answersheet-meta" id="as-meta"></div>
+      </div>
+      <div class="answersheet-close-hint" id="as-score"></div>
+    </div>
+    <div class="as-topbar">Số câu đã trả lời: <strong id="as-answered-count">—</strong></div>
+    <div class="answersheet-notice">
+      📸 Vui lòng chụp lại Answer sheet để lưu bài làm — phòng trường hợp thoát trang hoặc đổi thiết bị làm mất kết quả.
+    </div>
+    <div class="as-table-wrap">
+      <div class="as-columns" id="answersheet-body"></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn-result btn-result-secondary" onclick="showScreen('screen-result')">← Quay lại kết quả</button>
+      <button class="btn-result btn-result-primary" onclick="showReview()">👁 Xem lại bài làm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN: REVIEW (read-only)
+     ============================================================ -->
+<div id="screen-review" class="screen">
+  <!-- Reuse sidebar styling, read-only version -->
+  <aside class="sidebar" id="review-sidebar">
+    <div class="sidebar-logo">
+      <div class="g-logo">G.EDU</div>
+      <div class="g-test-name" id="review-test-name"></div>
+    </div>
+    <div class="sidebar-student">
+      <div class="s-name" id="review-sidebar-name"></div>
+      <div class="s-class" id="review-sidebar-class"></div>
+    </div>
+    <div class="sidebar-timer" style="border-bottom:1px solid rgba(212,175,55,0.08)">
+      <div class="timer-label">Kết quả</div>
+      <div class="timer-display" id="review-score-sidebar" style="font-size:1.4rem">—/40</div>
+    </div>
+    <div class="sidebar-map">
+      <div class="map-label">Question Map</div>
+      <div class="q-grid" id="review-q-grid"></div>
+    </div>
+    <div class="review-sidebar-overlay">
+      <span class="review-readonly-badge">CHỈ XEM — KHÔNG THỂ SỬA</span>
+    </div>
+    <div class="sidebar-actions" style="margin-top:12px">
+      <button class="btn-flag-view" onclick="showAnswerSheet()" style="border-color:var(--gold);color:var(--gold)">← Answer Sheet</button>
+      <button class="btn-submit" onclick="showScreen('screen-result')">← Kết quả</button>
+    </div>
+  </aside>
+
+  <div class="review-main" id="review-main">
+    <!-- Cloned + frozen content rendered by JS -->
+  </div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT ENGINE
+     ============================================================ -->
+<script>
+/* ─────────────────────────────────────────────────────────────
+   CONFIGURATION — AI STUDIO: chỉnh sửa phần này
+   ───────────────────────────────────────────────────────────── */
+const CONFIG = {
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbze-ULqfpnB5IcJxAvg2m7IfSqkoUY4JmoHnjvpuGvxodzmLbhHHlcqxfcnha2aahY/exec',
+  TEST_NAME:  'vol9_lis3',
+  TOTAL_Q:    40,
+  TIMER_SECS: 35 * 60,             // 35 phút (30 nghe + 5 xem lại)
+  WARN_SECS:  5 * 60,              // cảnh báo đỏ khi còn 5 phút
+
+  // AI STUDIO: điền đáp án đúng vào đây
+  // key = số câu (string), value = đáp án chuẩn (lowercase, trim sẵn)
+  // Câu chọn 2 dùng key "19-20", value = array sorted, vd: ["b","d"]
+  CORRECT_ANSWERS: {
+    "1":  "c", "2":  "a", "3":  "b", "4":  "a", "5":  "b",
+    "6":  "c", "7":  "c", "8":  "a", "9":  "cotehele", "10": "sh121lq",
+    "11": "travelling", "12": "get good shoes", "13": "wearing formal clothes", "14": "large office", "15": "good pay",
+    "16": "live nearby", "17": "b", "18": "c", "19": "b", "20": "a",
+    "21": "b", "22": "a", "23": "c", "24": "c", "25": "a", "26": "c", "27": "e", "28": "b", "29": "g", "30": "d",
+    "31": "ingredients", "32": "stored", "33": "temperature", "34": "organic", "35": "image",
+    "36": "information", "37": "sales", "38": "entertainment", "39": "nutrition", "40": "parents"
+  },
+
+  // Part ranges for Question Map display
+  PARTS: [
+    { label: 'Part 1', from: 1,  to: 10 },
+    { label: 'Part 2', from: 11, to: 20 },
+    { label: 'Part 3', from: 21, to: 30 },
+    { label: 'Part 4', from: 31, to: 40 },
+  ],
+
+  // Dual-answer question groups: key used in answers dict
+  DUAL_GROUPS: [],
+};
+
+/* ─────────────────────────────────────────────────────────────
+   STATE
+   ───────────────────────────────────────────────────────────── */
+let state = {
+  name: '', cls: '',
+  answers: {},      // { "1":"answer", "19-20":["A","C"], ... }
+  flags: {},        // { "1": true, ... }
+  submitted: false,
+  score: 0,
+  timerInterval: null,
+  secondsLeft: CONFIG.TIMER_SECS,
+  hlColor: 'yellow',
+};
+
+const STORAGE_KEY  = () => `gedu_${CONFIG.TEST_NAME}_${state.name}_${state.cls}`;
+const FLAG_KEY     = () => `gedu_${CONFIG.TEST_NAME}_flags_${state.name}_${state.cls}`;
+const SUBMIT_KEY   = () => `gedu_${CONFIG.TEST_NAME}_submitted_${state.name}_${state.cls}`;
+const TIMER_KEY    = () => `gedu_${CONFIG.TEST_NAME}_timer_${state.name}_${state.cls}`;
+
+/* ─────────────────────────────────────────────────────────────
+   SCREEN MANAGER
+   ───────────────────────────────────────────────────────────── */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LOGIN
+   ───────────────────────────────────────────────────────────── */
+function handleLogin() {
+  const name = document.getElementById('input-name').value.trim().toUpperCase();
+  const cls  = document.getElementById('input-class').value.trim().toUpperCase();
+  if (!name || !cls) { alert('Vui lòng nhập đầy đủ Họ tên và Lớp.'); return; }
+  state.name = name; state.cls = cls;
+
+  // Restore answers
+  try { const s = localStorage.getItem(STORAGE_KEY()); if (s) state.answers = JSON.parse(s); } catch(e) {}
+  // Restore flags
+  try { const f = localStorage.getItem(FLAG_KEY()); if (f) state.flags = JSON.parse(f); } catch(e) {}
+
+  // Populate shared UI labels
+  const testLabel = CONFIG.TEST_NAME.replace(/_/g,' ').toUpperCase();
+  document.getElementById('sidebar-name').textContent   = name;
+  document.getElementById('sidebar-class').textContent  = cls;
+  document.getElementById('sidebar-test-name').textContent = testLabel;
+  document.getElementById('ready-test-name').textContent   = testLabel;
+  document.getElementById('ready-student-name').textContent  = name;
+  document.getElementById('ready-student-class').textContent = cls;
+
+  // ── SCENARIO 2: already submitted → jump straight to result ──
+  try {
+    const submitData = localStorage.getItem(SUBMIT_KEY());
+    if (submitData) {
+      const saved = JSON.parse(submitData);
+      state.submitted = true;
+      state.score     = saved.score;
+      state.answers   = saved.answers;
+      showResultScreen();
+      return;
+    }
+  } catch(e) {}
+
+  // ── SCENARIO 1: mid-exam, timer already started → skip ready screen, go straight to exam ──
+  buildQGrid();
+  const timerStarted = localStorage.getItem(TIMER_KEY());
+  if (timerStarted) {
+    showScreen('screen-exam');
+    restoreAnswersToDOM();
+    restoreFlagsToDOM();
+    startTimer();
+  } else {
+    showScreen('screen-ready');
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BEGIN EXAM
+   ───────────────────────────────────────────────────────────── */
+function handleBegin() {
+  showScreen('screen-exam');
+  restoreAnswersToDOM();
+  restoreFlagsToDOM();
+  // Save start timestamp only once (first time begin is pressed)
+  if (!localStorage.getItem(TIMER_KEY())) {
+    localStorage.setItem(TIMER_KEY(), Date.now().toString());
+  }
+  startTimer();
+}
+
+/* ─────────────────────────────────────────────────────────────
+   QUESTION MAP
+   ───────────────────────────────────────────────────────────── */
+function buildQGrid() {
+  const grid = document.getElementById('q-grid');
+  grid.innerHTML = '';
+  CONFIG.PARTS.forEach(part => {
+    const lbl = document.createElement('div');
+    lbl.className = 'part-label-cell'; lbl.textContent = part.label;
+    grid.appendChild(lbl);
+    for (let i = part.from; i <= part.to; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'q-cell'; cell.textContent = i; cell.id = `qcell-${i}`;
+      cell.onclick = () => scrollToQ(i);
+      grid.appendChild(cell);
+    }
+  });
+  refreshQGrid();
+}
+
+function refreshQGrid() {
+  for (let i = 1; i <= CONFIG.TOTAL_Q; i++) {
+    const cell = document.getElementById(`qcell-${i}`);
+    if (!cell) continue;
+    const hasAns = hasAnswer(i);
+    const isFlagged = state.flags[i];
+    cell.className = 'q-cell' + (hasAns ? ' answered' : '') + (isFlagged ? ' flagged' : '');
+  }
+  updateTabDots && updateTabDots();
+  // Dual groups
+  CONFIG.DUAL_GROUPS.forEach(grp => {
+    const [a, b] = grp.split('-').map(Number);
+    const arr = state.answers[grp];
+    const hasAns = arr && arr.length > 0;
+    [a, b].forEach(n => {
+      const cell = document.getElementById(`qcell-${n}`);
+      if (!cell) return;
+      const isFlagged = state.flags[n];
+      cell.className = 'q-cell' + (hasAns ? ' answered' : '') + (isFlagged ? ' flagged' : '');
+    });
+  });
+}
+
+function hasAnswer(qNum) {
+  // Check if it's part of a dual group
+  const dualKey = CONFIG.DUAL_GROUPS.find(g => {
+    const [a,b] = g.split('-').map(Number);
+    return qNum === a || qNum === b;
+  });
+  if (dualKey) {
+    const arr = state.answers[dualKey];
+    return arr && arr.length > 0;
+  }
+  const ans = state.answers[String(qNum)];
+  return ans !== undefined && String(ans).trim() !== '';
+}
+
+function scrollToQ(n) {
+  // Switch to correct part first
+  const part = CONFIG.PARTS.find(p => n >= p.from && n <= p.to);
+  if (part) switchPart(part.from <= 10 ? 1 : part.from <= 20 ? 2 : part.from <= 30 ? 3 : 4, false);
+  setTimeout(() => {
+    const el = document.getElementById(`anchor-${n}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+let currentPart = 1;
+
+function switchPart(n, scrollTop = true) {
+  currentPart = n;
+  // Panels
+  document.querySelectorAll('.part-panel').forEach(p => {
+    p.classList.toggle('active', Number(p.dataset.part) === n);
+  });
+  // Tabs
+  document.querySelectorAll('.part-tab').forEach(t => {
+    t.classList.toggle('active', Number(t.dataset.tab) === n);
+  });
+  if (scrollTop) window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateTabDots();
+}
+
+function updateTabDots() {
+  CONFIG.PARTS.forEach((part, idx) => {
+    const tabN = idx + 1;
+    const tab = document.querySelector(`.part-tab[data-tab="${tabN}"]`);
+    if (!tab) return;
+    let anyAnswered = false;
+    for (let i = part.from; i <= part.to; i++) {
+      if (hasAnswer(i)) { anyAnswered = true; break; }
+    }
+    tab.classList.toggle('has-answers', anyAnswered);
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ANSWER HANDLERS
+   ───────────────────────────────────────────────────────────── */
+function handleInput(qNum, el) {
+  const val = el.value.trim();
+  state.answers[String(qNum)] = val;
+  el.classList.toggle('has-answer', val.length > 0);
+  saveToStorage();
+  refreshQGrid();
+}
+
+function handleRadio(qNum, val) {
+  state.answers[String(qNum)] = val;
+  saveToStorage();
+  refreshQGrid();
+}
+
+function handleDual(groupKey, checkbox) {
+  const group = document.querySelectorAll(`input[name="q${groupKey}"]`);
+  const checked = [...group].filter(cb => cb.checked);
+  if (checked.length > 2) { checkbox.checked = false; return; }
+  state.answers[groupKey] = checked.map(cb => cb.value).sort();
+  saveToStorage();
+  // Update both cells
+  const [a,b] = groupKey.split('-').map(Number);
+  [a,b].forEach(n => {
+    const cell = document.getElementById(`qcell-${n}`);
+    if (cell) {
+      const hasAns = state.answers[groupKey] && state.answers[groupKey].length > 0;
+      cell.className = 'q-cell' + (hasAns ? ' answered' : '') + (state.flags[n] ? ' flagged' : '');
+    }
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FLAG
+   ───────────────────────────────────────────────────────────── */
+function toggleFlag(n) {
+  state.flags[n] = !state.flags[n];
+  localStorage.setItem(FLAG_KEY(), JSON.stringify(state.flags));
+  const btn = document.querySelector(`.q-flag-btn[data-q="${n}"]`);
+  if (btn) btn.classList.toggle('flagged', state.flags[n]);
+  refreshQGrid();
+}
+
+function restoreFlagsToDOM() {
+  Object.entries(state.flags).forEach(([n, flagged]) => {
+    if (flagged) {
+      const btn = document.querySelector(`.q-flag-btn[data-q="${n}"]`);
+      if (btn) btn.classList.add('flagged');
+    }
+  });
+  refreshQGrid();
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESTORE ANSWERS TO DOM
+   ───────────────────────────────────────────────────────────── */
+function restoreAnswersToDOM() {
+  Object.entries(state.answers).forEach(([key, val]) => {
+    // Fill-in
+    const inp = document.getElementById(`ans-${key}`);
+    if (inp && typeof val === 'string') {
+      inp.value = val;
+      inp.classList.toggle('has-answer', val.length > 0);
+    }
+    // Radio
+    const radios = document.querySelectorAll(`input[type="radio"][name="q${key}"]`);
+    radios.forEach(r => { r.checked = r.value === val; });
+    // Dual checkboxes
+    if (Array.isArray(val)) {
+      const cbs = document.querySelectorAll(`input[type="checkbox"][name="q${key}"]`);
+      cbs.forEach(cb => { cb.checked = val.includes(cb.value); });
+    }
+  });
+  refreshQGrid();
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LOCALSTORAGE
+   ───────────────────────────────────────────────────────────── */
+function saveToStorage() {
+  try {
+    localStorage.setItem(STORAGE_KEY(), JSON.stringify(state.answers));
+  } catch(e) {}
+}
+
+function saveSubmitState() {
+  try {
+    localStorage.setItem(SUBMIT_KEY(), JSON.stringify({
+      score:   state.score,
+      answers: state.answers,
+    }));
+    // Keep answer data but mark as done — no need to clear mid-exam save
+  } catch(e) {}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HIGHLIGHT
+   ───────────────────────────────────────────────────────────── */
+let currentHL = 'yellow';
+const hlToolbar = () => document.getElementById('hl-toolbar');
+
+function selectHLColor(color, btn) {
+  currentHL = color;
+  document.querySelectorAll('.hl-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyHighlightColor(color);
+  hideHLToolbar();
+}
+
+function hideHLToolbar() {
+  hlToolbar().classList.remove('visible');
+}
+
+function showHLToolbar(x, y) {
+  const tb = hlToolbar();
+  tb.classList.add('visible');
+  const tbW = tb.offsetWidth || 160;
+  const tbH = tb.offsetHeight || 44;
+  // Clamp X so toolbar never overflows viewport edges
+  const clampedX = Math.min(Math.max(x, tbW / 2 + 8), window.innerWidth - tbW / 2 - 8);
+  tb.style.left = clampedX + 'px';
+  tb.style.top  = Math.max(8, y - tbH - 10) + 'px';
+}
+
+// Apply highlight with chosen color to current selection
+function applyHighlightColor(color) {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+  const range = sel.getRangeAt(0);
+  if (range.collapsed) return;
+  try {
+    const mark = document.createElement('mark');
+    mark.className = `hl-${color}`;
+    range.surroundContents(mark);
+  } catch(err) {
+    wrapTextNodes(range, `hl-${color}`);
+  }
+  sel.removeAllRanges();
+}
+
+// Show toolbar on mouseup inside main-content
+document.addEventListener('mouseup', (e) => {
+  // Clicking the toolbar itself — don't hide
+  if (e.target.closest('#hl-toolbar')) return;
+
+  // Clicking a highlighted mark — remove it
+  const mark = e.target.closest('mark[class^="hl-"]');
+  if (mark && e.target.closest('#main-content')) {
+    const parent = mark.parentNode;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    parent.normalize();
+    hideHLToolbar();
+    return;
+  }
+
+  if (!e.target.closest('#main-content')) {
+    hideHLToolbar();
+    return;
+  }
+
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || sel.toString().trim() === '') {
+    hideHLToolbar();
+    return;
+  }
+
+  // Position toolbar above selection midpoint (viewport coords, fixed positioning)
+  const range = sel.getRangeAt(0);
+  const rect  = range.getBoundingClientRect();
+  const midX  = rect.left + rect.width / 2;
+  const topY  = rect.top;   // fixed = viewport coords, no scrollY needed
+  showHLToolbar(midX, topY);
+});
+
+// Hide toolbar on scroll or Escape
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideHLToolbar(); });
+
+function wrapTextNodes(range, className) {
+  const start = range.startContainer, end = range.endContainer;
+  const ancestor = range.commonAncestorContainer;
+  const iter = document.createNodeIterator(ancestor, NodeFilter.SHOW_TEXT);
+  let node, inRange = false;
+  const toWrap = [];
+  while ((node = iter.nextNode())) {
+    if (node === start || (start.nodeType !== 3 && start.contains && start.contains(node))) inRange = true;
+    if (inRange) toWrap.push(node);
+    if (node === end || (end.nodeType !== 3 && end.contains && end.contains(node))) break;
+  }
+  toWrap.forEach(n => {
+    const mark = document.createElement('mark');
+    mark.className = className;
+    n.parentNode.insertBefore(mark, n);
+    mark.appendChild(n);
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FLAG PANEL
+   ───────────────────────────────────────────────────────────── */
+function openFlagPanel() {
+  const body = document.getElementById('flag-panel-body');
+  const flagged = Object.entries(state.flags).filter(([,v]) => v);
+  if (flagged.length === 0) {
+    body.innerHTML = '<div class="flag-empty">Không có câu nào được đánh dấu.</div>';
+  } else {
+    body.innerHTML = flagged.sort((a,b) => Number(a[0])-Number(b[0])).map(([n]) => {
+      const ans = getDisplayAnswer(n);
+      return `<div class="flag-item" onclick="goToFlaggedQ(${n})">
+        <span class="flag-item-num">Câu ${n}</span>
+        <span class="flag-item-ans">${ans || '(chưa trả lời)'}</span>
+        <span style="color:rgba(212,175,55,0.4);font-size:0.8rem">→</span>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('flag-overlay').classList.add('open');
+}
+
+function getDisplayAnswer(n) {
+  const dualKey = CONFIG.DUAL_GROUPS.find(g => {
+    const [a,b] = g.split('-').map(Number);
+    return Number(n) === a || Number(n) === b;
+  });
+  if (dualKey) {
+    const arr = state.answers[dualKey];
+    return arr && arr.length ? arr.join(', ') : '';
+  }
+  return state.answers[String(n)] || '';
+}
+
+function goToFlaggedQ(n) {
+  closeFlagPanel();
+  scrollToQ(n);
+}
+function closeFlagPanel() { document.getElementById('flag-overlay').classList.remove('open'); }
+function closeFlagPanelOuter(e) { if (e.target === document.getElementById('flag-overlay')) closeFlagPanel(); }
+
+/* ─────────────────────────────────────────────────────────────
+   MODAL
+   ───────────────────────────────────────────────────────────── */
+function openSubmitModal() {
+  const unanswered = countUnanswered();
+  document.getElementById('modal-unanswered').textContent = unanswered;
+  document.getElementById('modal-submit').classList.add('open');
+}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function countUnanswered() {
+  let count = 0;
+  for (let i = 1; i <= CONFIG.TOTAL_Q; i++) {
+    if (!hasAnswer(i)) count++;
+  }
+  return count;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TIMER
+   ───────────────────────────────────────────────────────────── */
+function startTimer() {
+  const display = document.getElementById('timer-display');
+
+  // Calculate remaining time from saved start timestamp
+  const saved = localStorage.getItem(TIMER_KEY());
+  if (saved) {
+    const elapsed = Math.floor((Date.now() - parseInt(saved)) / 1000);
+    state.secondsLeft = Math.max(0, CONFIG.TIMER_SECS - elapsed);
+  } else {
+    state.secondsLeft = CONFIG.TIMER_SECS;
+  }
+
+  // If already expired on restore, auto-submit immediately
+  if (state.secondsLeft <= 0) { autoSubmit(); return; }
+
+  // Render immediately before first tick
+  const m0 = Math.floor(state.secondsLeft / 60);
+  const s0 = state.secondsLeft % 60;
+  display.textContent = `${String(m0).padStart(2,'0')}:${String(s0).padStart(2,'0')}`;
+  if (state.secondsLeft <= CONFIG.WARN_SECS) display.classList.add('warn');
+
+  state.timerInterval = setInterval(() => {
+    state.secondsLeft--;
+    const m = Math.floor(state.secondsLeft / 60);
+    const s = state.secondsLeft % 60;
+    display.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+
+    if (state.secondsLeft <= CONFIG.WARN_SECS && state.secondsLeft > 0) {
+      display.classList.add('warn');
+    }
+    if (state.secondsLeft <= 0) {
+      clearInterval(state.timerInterval);
+      autoSubmit();
+    }
+  }, 1000);
+}
+
+function autoSubmit() {
+  if (state.submitted) return;
+  document.getElementById('modal-timeout').classList.add('open');
+  submitExam();
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SCORING
+   ───────────────────────────────────────────────────────────── */
+function calcScore() {
+  let score = 0;
+  const CA = CONFIG.CORRECT_ANSWERS;
+
+  Object.entries(CA).forEach(([key, correct]) => {
+    const student = state.answers[key];
+    if (Array.isArray(correct)) {
+      // Dual: compare sorted arrays
+      if (Array.isArray(student)) {
+        const a = [...correct].map(x=>x.toLowerCase()).sort().join(',');
+        const b = [...student].map(x=>x.toLowerCase()).sort().join(',');
+        if (a === b) score += correct.length; // each item counts as 1 point
+      }
+    } else {
+      if (student && student.toString().toLowerCase().trim() === correct.toLowerCase().trim()) {
+        score++;
+      }
+    }
+  });
+  return score;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SUBMIT
+   ───────────────────────────────────────────────────────────── */
+async function submitExam() {
+  if (state.submitted) return;
+  state.submitted = true;
+  closeModal('modal-submit');
+  closeModal('modal-timeout');
+  if (state.timerInterval) clearInterval(state.timerInterval);
+
+  document.getElementById('spinner').classList.add('open');
+
+  state.score = calcScore();
+  saveSubmitState();
+  try { localStorage.removeItem(TIMER_KEY()); } catch(e) {}
+
+  // Build flat answers object (numeric keys 1–40)
+  const flatAnswers = {};
+  for (let i = 1; i <= CONFIG.TOTAL_Q; i++) {
+    const dualKey = CONFIG.DUAL_GROUPS.find(g => {
+      const [a,b] = g.split('-').map(Number);
+      return i === a || i === b;
+    });
+    if (dualKey) {
+      const arr = state.answers[dualKey] || [];
+      flatAnswers[String(i)] = arr.join('/');
+    } else {
+      flatAnswers[String(i)] = state.answers[String(i)] || '';
+    }
+  }
+
+  const params = new URLSearchParams({
+    test_name: CONFIG.TEST_NAME,
+    name:      state.name,
+    cls:       state.cls,
+    score:     state.score,
+    answers:   JSON.stringify(flatAnswers),
+  });
+
+  const sendURL = `${CONFIG.SCRIPT_URL}?${params.toString()}`;
+
+  try {
+    await fetch(sendURL, { mode: 'no-cors' });
+  } catch(e) {
+    // Image beacon fallback
+    new Image().src = sendURL;
+  }
+
+  document.getElementById('spinner').classList.remove('open');
+  showResultScreen();
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESULT
+   ───────────────────────────────────────────────────────────── */
+function showResultScreen() {
+  document.getElementById('result-score-display').innerHTML = `${state.score}<span>/${CONFIG.TOTAL_Q}</span>`;
+  document.getElementById('result-name-display').textContent  = state.name;
+  document.getElementById('result-class-display').textContent = state.cls;
+  document.getElementById('result-test-name-display').textContent = CONFIG.TEST_NAME.replace(/_/g,' ').toUpperCase();
+  renderBandTable(state.score);
+  showScreen('screen-result');
+}
+
+const BAND_TABLE = [
+  { min: 39, max: 40, band: 9.0 },
+  { min: 37, max: 38, band: 8.5 },
+  { min: 35, max: 36, band: 8.0 },
+  { min: 33, max: 34, band: 7.5 },
+  { min: 30, max: 32, band: 7.0 },
+  { min: 27, max: 29, band: 6.5 },
+  { min: 23, max: 26, band: 6.0 },
+  { min: 20, max: 22, band: 5.5 },
+  { min: 16, max: 19, band: 5.0 },
+  { min: 13, max: 15, band: 4.5 },
+  { min: 10, max: 12, band: 4.0 },
+  { min: 7,  max: 9,  band: 3.5 },
+  { min: 5,  max: 6,  band: 3.0 },
+  { min: 3,  max: 4,  band: 2.5 },
+];
+
+function getBand(score) {
+  for (const row of BAND_TABLE) {
+    if (score >= row.min && score <= row.max) return row.band;
+  }
+  return score >= 39 ? 9.0 : '—';
+}
+
+function renderBandTable(score) {
+  const band = getBand(score);
+  document.getElementById('band-score-display').textContent = band;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ANSWER SHEET
+   ───────────────────────────────────────────────────────────── */
+function showAnswerSheet() {
+  const dateStr = new Date().toLocaleDateString('vi-VN');
+  document.getElementById('as-meta').textContent =
+    `${state.name} — ${state.cls} — ${CONFIG.TEST_NAME.replace(/_/g,' ').toUpperCase()} — ${dateStr}`;
+  document.getElementById('as-score').textContent = `${state.score} / ${CONFIG.TOTAL_Q}`;
+
+  // Count answered
+  let answered = 0;
+  for (let i = 1; i <= CONFIG.TOTAL_Q; i++) { if (hasAnswer(i)) answered++; }
+  document.getElementById('as-answered-count').textContent = `${answered}/${CONFIG.TOTAL_Q}`;
+
+  // Build 4-column table: each col = 10 rows (Q1-10, Q11-20, Q21-30, Q31-40)
+  const body = document.getElementById('answersheet-body');
+  body.innerHTML = '';
+
+  CONFIG.PARTS.forEach(part => {
+    const col = document.createElement('div');
+    col.className = 'as-col';
+
+    const header = document.createElement('div');
+    header.className = 'as-col-header';
+    header.innerHTML = '<span>Câu</span><span>Đáp án của bạn</span>';
+    col.appendChild(header);
+
+    for (let i = part.from; i <= part.to; i++) {
+      const ans = getDisplayAnswer(i) || '';
+      const row = document.createElement('div');
+      row.className = 'as-row';
+      row.innerHTML = `<span class="as-row-num">${i}</span><span class="as-row-ans ${ans ? '' : 'empty'}">${ans || '—'}</span>`;
+      col.appendChild(row);
+    }
+    body.appendChild(col);
+  });
+
+  showScreen('screen-answersheet');
+}
+
+/* ─────────────────────────────────────────────────────────────
+   REVIEW
+   ───────────────────────────────────────────────────────────── */
+function showReview() {
+  // Populate review sidebar
+  const testLabel = CONFIG.TEST_NAME.replace(/_/g,' ').toUpperCase();
+  document.getElementById('review-test-name').textContent   = testLabel;
+  document.getElementById('review-sidebar-name').textContent  = state.name;
+  document.getElementById('review-sidebar-class').textContent = state.cls;
+  document.getElementById('review-score-sidebar').textContent = `${state.score}/${CONFIG.TOTAL_Q}`;
+
+  // Build read-only question map in review sidebar
+  const grid = document.getElementById('review-q-grid');
+  grid.innerHTML = '';
+  CONFIG.PARTS.forEach(part => {
+    const lbl = document.createElement('div');
+    lbl.className = 'part-label-cell'; lbl.textContent = part.label;
+    grid.appendChild(lbl);
+    for (let i = part.from; i <= part.to; i++) {
+      const cell = document.createElement('div');
+      const hasAns = hasAnswer(i);
+      const isFlagged = state.flags[i];
+      cell.className = 'q-cell' + (hasAns ? ' answered' : '') + (isFlagged ? ' flagged' : '');
+      cell.textContent = i;
+      cell.onclick = () => {
+        const el = reviewMain.querySelector(`#anchor-${i}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      grid.appendChild(cell);
+    }
+  });
+
+  // Clone exam content into review main
+  const mainContent = document.getElementById('main-content');
+  const reviewMain  = document.getElementById('review-main');
+  reviewMain.innerHTML = '';
+  const clone = mainContent.cloneNode(true);
+
+  // Make all inputs read-only
+  clone.querySelectorAll('input[type="text"]').forEach(inp => {
+    const q = inp.dataset.q;
+    inp.value = state.answers[q] || '';
+    inp.readOnly = true;
+    inp.classList.toggle('has-answer', !!(state.answers[q]));
+    inp.oninput = null;
+  });
+  clone.querySelectorAll('input[type="radio"]').forEach(r => {
+    const name = r.name.replace('q','');
+    r.checked = state.answers[name] === r.value;
+    r.disabled = true;
+  });
+  clone.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    const name = cb.name.replace('q','');
+    const arr = state.answers[name] || [];
+    cb.checked = arr.includes(cb.value);
+    cb.disabled = true;
+  });
+  clone.querySelectorAll('select').forEach(sel => {
+    const q = sel.dataset.q;
+    sel.value = state.answers[q] || '';
+    sel.disabled = true;
+  });
+  clone.querySelectorAll('.q-flag-btn').forEach(btn => btn.remove());
+
+  reviewMain.appendChild(clone);
+  showScreen('screen-review');
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INIT
+   ───────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const testLabel = CONFIG.TEST_NAME.replace(/_/g,' ').toUpperCase();
+  document.querySelectorAll('[id$="-test-name"]').forEach(el => el.textContent = testLabel);
+  // Background watermark text on login screen
+  const bg = document.getElementById('login-bg-text');
+  if (bg) bg.textContent = testLabel;
+});
+</script>
+</body>
+</html>
